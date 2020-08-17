@@ -1,5 +1,6 @@
 defmodule Deux.Ping.Source do
   alias Deux.{Crypto, DataPoints}
+
   defstruct [
     :id,
     :name,
@@ -11,7 +12,6 @@ defmodule Deux.Ping.Source do
     type: "ping",
     history: %DataPoints{}
   ]
-
 
   def build(%{request: request} = args) do
     mode = Map.get(args, :mode, :status)
@@ -35,6 +35,7 @@ defmodule Deux.Ping.Source do
       |> Enum.map(fn tuple -> tuple |> Tuple.to_list() |> Enum.join() end)
       |> Enum.join()
 
-    "#{Atom.to_string(method)}::#{Atom.to_string(mode)}::#{url}::#{headers_string}" |> Crypto.sha()
+    "#{Atom.to_string(method)}::#{Atom.to_string(mode)}::#{url}::#{headers_string}"
+    |> Crypto.sha()
   end
 end

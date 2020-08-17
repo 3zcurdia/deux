@@ -11,7 +11,7 @@ defmodule Deux.DataPoints do
   end
 
   def discard_last(%DataPoints{values: values} = data_points) do
-    {_, values} = List.pop_at(values, length(values)-1)
+    {_, values} = List.pop_at(values, length(values) - 1)
     %DataPoints{data_points | values: values}
   end
 end

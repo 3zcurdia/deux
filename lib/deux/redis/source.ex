@@ -1,5 +1,6 @@
 defmodule Deux.Redis.Source do
   alias Deux.{Crypto, DataPoints}
+
   defstruct [
     :id,
     :name,

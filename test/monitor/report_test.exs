@@ -23,6 +23,24 @@ defmodule Deux.ReportTest do
   test "must return error tuple on different maps" do
     a = %{a: 1}
     b = %{a: 2}
-    assert Report.diff(a, b) == {:error, %{adds: [a: 2], subs: [a: 1], distance: 1}}
+    assert Report.diff(a, b) == {:error, %{adds: %{a: 2}, subs: %{a: 1}, distance: 1}}
+  end
+
+  test "must return error tupole on different strings" do
+    a = "cat"
+    b = "rar"
+    assert Report.diff(a, b) == {:error, %{adds: b, subs: a, distance: 2}}
+  end
+
+  test "must return error tupole on different atoms" do
+    a = :foo
+    b = :bar
+    assert Report.diff(a, b) == {:error, %{adds: b, subs: a, distance: 2}}
+  end
+
+  test "must return error tupole on different integers" do
+    a = 1
+    b = 2
+    assert Report.diff(a, b) == {:error, %{adds: b, subs: a, distance: 1}}
   end
 end

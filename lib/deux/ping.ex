@@ -7,8 +7,8 @@ defmodule Deux.Ping do
   def add(args) when is_nil(args), do: nil
 
   def add(args) do
-      args
-      |> Source.build()
-      |> Deux.find_or_add_source()
+    args
+    |> Source.build()
+    |> Deux.find_or_add_source()
   end
 end

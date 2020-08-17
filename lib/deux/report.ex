@@ -14,8 +14,12 @@ defimpl Deux.Report, for: Map do
     if valid?(local, remote) do
       {:ok, %{}}
     else
-      subs = local |> Enum.reject(fn {key, value} -> Map.get(remote, key) == value end)
-      adds = remote |> Enum.reject(fn {key, value} -> Map.get(local, key) == value end)
+      subs =
+        local |> Enum.reject(fn {key, value} -> Map.get(remote, key) == value end) |> Map.new()
+
+      adds =
+        remote |> Enum.reject(fn {key, value} -> Map.get(local, key) == value end) |> Map.new()
+
       distance = length(Map.keys(adds) || Map.keys(subs))
       {:error, %{adds: adds, subs: subs, distance: distance}}
     end
@@ -36,7 +40,6 @@ defimpl Deux.Report, for: BitString do
     end
   end
 
-  @spec valid?(string, string) :: boolean
   def valid?(local, remote), do: local == remote
 end
 
@@ -57,7 +60,7 @@ defimpl Deux.Report, for: Integer do
     if valid?(local, remote) do
       {:ok, %{}}
     else
-      {:error, %{adds: remote, subs: local, distance: local - remote}}
+      {:error, %{adds: remote, subs: local, distance: abs(local - remote)}}
     end
   end
 

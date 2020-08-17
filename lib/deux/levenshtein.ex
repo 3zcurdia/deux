@@ -1,4 +1,8 @@
 defmodule Deux.Levenshtein do
+  @moduledoc """
+  Levenshtein distance 
+  """
+
   def distance(a, b) do
     ta = String.downcase(a) |> to_char_list |> List.to_tuple()
     tb = String.downcase(b) |> to_char_list |> List.to_tuple()

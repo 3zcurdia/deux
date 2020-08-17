@@ -8,6 +8,10 @@ defmodule Deux do
 
   @doc """
   It subscribes to the PubSub reports channel
+
+  ## Examples
+
+     iex> Deux.subscribe()
   """
   def subscribe do
     Phoenix.PubSub.subscribe(Deux.PubSub, @topic)
@@ -15,6 +19,10 @@ defmodule Deux do
 
   @doc """
   It broadcast the event for a given report
+
+  ## Examples
+
+     ex> Deux.broadcast_report(:update_report, "12452465645352413")
   """
   def broadcast_report(event, id) do
     Phoenix.PubSub.broadcast(Deux.PubSub, @topic, {event, id})

@@ -1,4 +1,5 @@
 # Deux
+![Elixir CI](https://github.com/3zcurdia/deux/workflows/Elixir%20CI/badge.svg)
 
 Status monitor for external services:
   - Redis: track specific keys values

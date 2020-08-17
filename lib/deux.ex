@@ -1,6 +1,6 @@
 defmodule Deux do
   @moduledoc """
-  It monitors all services to get an integrity report.
+  Status monitor for external services
   """
   alias Deux.Workers.{Sources, LocalReports, RemoteSupervisor}
 

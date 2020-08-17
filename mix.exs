@@ -1,6 +1,6 @@
 defmodule Deux.MixProject do
   use Mix.Project
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [
@@ -40,7 +40,21 @@ defmodule Deux.MixProject do
     [
       source_ref: "v#{@version}",
       main: "readme",
-      extras: ["README.md"]
+      extras: ["README.md"],
+      groups_for_modules: [
+        # Deux.Ping
+        # Deux.Redis
+        "Workers": [
+          Deux.Workers.Sources,
+          Deux.Workers.LocalReports,
+          Deux.Workers.RemoteWorker,
+          Deux.Workers.RemoteSupervisor,
+        ],
+        "Source Types": [
+          Deux.Ping.Source,
+          Deux.Redis.Source,
+        ]
+      ]
     ]
   end
 

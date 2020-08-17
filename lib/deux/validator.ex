@@ -1,9 +1,12 @@
 defmodule Deux.Validator do
+  @moduledoc """
+  Validate sources, comparing with the stored local reports
+  """
   alias Deux.DataPoints
   alias Deux.Workers.LocalReports
 
   @doc """
-  It validates a given source with a given repots
+  It validates a given source with a given report and add data point to history
   """
   def validate(%{id: id} = map, report) do
     valid = LocalReports.valid?(id, report)

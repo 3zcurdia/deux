@@ -1,6 +1,6 @@
 defprotocol Deux.Report do
   @doc """
-  Returns the adds and substraciont for a give source
+  Protocol to handle report actions for any given format
   """
   @spec diff(any, any) :: {atom, map}
   def diff(local, remote)

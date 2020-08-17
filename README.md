@@ -42,7 +42,7 @@ To monitor redis you need to add with
 To monitor ping you need to add with
 
 ```
-  ping_source = Deux.Ping.add(name: "localhost", url: "http://127.0.0.1:3000", mode: :body)
+  ping_source = Deux.Ping.add(name: "localhost", request: [method: :get, url: "http://127.0.0.1:3000"], mode: :body)
 ```
 
 ### Load sources
@@ -57,14 +57,14 @@ You also can fetch an specific source with a given id
 
 ```
   {:ok, source} = Deux.get_source("213243546576")
-``` 
+```
 
 ## Load on boot with config
 
 You can also set your monitors to through the config
 
 ```
-config :monitor,
+config :deux,
   redis: [
     %{
       name: "localhost flags",

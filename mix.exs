@@ -22,6 +22,7 @@ defmodule Deux.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:phoenix, ">= 1.4.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:tesla, "~> 1.3.0"},
       {:exredis, ">= 0.2.4"}

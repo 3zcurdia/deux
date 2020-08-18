@@ -1,5 +1,6 @@
 # Deux
 ![Elixir CI](https://github.com/3zcurdia/deux/workflows/Elixir%20CI/badge.svg)
+[![Hex.pm Version](http://img.shields.io/hexpm/v/deux.svg?style=flat)](https://hex.pm/packages/deux)
 
 Status monitor for external services:
   - Redis: track specific keys values

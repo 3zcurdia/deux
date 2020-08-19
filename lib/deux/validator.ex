@@ -11,7 +11,15 @@ defmodule Deux.Validator do
   def validate(%{id: id} = map, report) do
     valid = LocalReports.valid?(id, report)
     timestamp = DateTime.utc_now()
-    tuple = {timestamp, if(valid, do: :ok, else: :error)}
+
+    msg =
+      if valid do
+        {:ok, :no_incidents}
+      else
+        {:error, LocalReports.diff(id, report)}
+      end
+
+    tuple = {timestamp, msg}
 
     map
     |> Map.put(:valid, valid)

@@ -14,6 +14,7 @@ defmodule Deux.Ping do
     - mode: (default :status) to monitor mode
        - `:status`: it monitors succesful statuses
        - `:body`: it monitors the complete body from a response
+       - `:json`: it monitors the json reponse
 
   ## Examples
 

@@ -45,7 +45,7 @@ defmodule Deux.Workers.Sources do
 
   @impl true
   def handle_cast({:add, source}, state) do
-    # Logger.debug("#{__MODULE__}#add #{source.id}")
+    Logger.debug("#{__MODULE__}#add #{source.id}")
     {:noreply, Map.put(state, source.id, source)}
   end
 

@@ -2,7 +2,7 @@ defmodule Deux do
   @moduledoc """
   Status monitor for external services
   """
-  alias Deux.Workers.{Sources, LocalReports, RemoteSupervisor}
+  alias Deux.Workers.{Sources, LocalReports, RemoteSupervisor, RemoteWorker}
 
   @topic "reports"
 
@@ -47,6 +47,12 @@ defmodule Deux do
       {:ok, source}
     end
   end
+
+  def get_local_report(%{id: id}), do: get_local_report(id)
+  def get_local_report(id), do: LocalReports.get(id)
+
+  def get_remote_report(%{id: id}), do: get_remote_report(id)
+  def get_remote_report(id), do: RemoteWorker.get(id)
 
   def find_or_add_source(source) do
     if report_exists?(source) do

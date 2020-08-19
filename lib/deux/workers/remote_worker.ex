@@ -19,7 +19,7 @@ defmodule Deux.Workers.RemoteWorker do
   # Callbacks
   @impl true
   def init(state) do
-    # Logger.debug("#{__MODULE__}#init #{state.id}")
+    Logger.debug("#{__MODULE__}#init #{state.id}")
     {:ok, state, {:continue, {:load_report}}}
   end
 

@@ -26,7 +26,7 @@ defmodule Deux.Ping.Source do
   end
 
   defp id_for(request, mode) do
-    {:url, url}      = List.keyfind(request, :url, 0)
+    {:url, url} = List.keyfind(request, :url, 0)
     {:method, method} = List.keyfind(request, :method, 0)
 
     headers =

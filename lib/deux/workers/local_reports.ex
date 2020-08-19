@@ -25,6 +25,10 @@ defmodule Deux.Workers.LocalReports do
     GenServer.call(__MODULE__, {:valid, id, remote})
   end
 
+  def diff(id, remote) do
+    GenServer.call(__MODULE__, {:diff, id, remote})
+  end
+
   # Callbacks
   @impl true
   def init(state) do
@@ -61,6 +65,16 @@ defmodule Deux.Workers.LocalReports do
     case lookup(id) do
       {:ok, local} -> {:reply, Report.valid?(local, remote), state}
       {:error, _msg} -> {:reply, false, state}
+    end
+  end
+
+  @impl true
+  def handle_call({:diff, id, remote}, _from, state) do
+    # Logger.debug("#{__MODULE__}#diff #{id}")
+
+    case lookup(id) do
+      {:ok, local} -> {:reply, Report.diff(local, remote), state}
+      {:error, _msg} -> {:reply, :not_found, state}
     end
   end
 

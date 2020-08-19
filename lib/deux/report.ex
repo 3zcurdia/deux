@@ -15,12 +15,18 @@ defimpl Deux.Report, for: Map do
       {:ok, %{}}
     else
       subs =
-        local |> Enum.reject(fn {key, value} -> Map.get(remote, key) == value end) |> Map.new()
+        local
+        |> Enum.reject(fn {key, value} -> Map.get(remote, key) == value end)
+        |> Map.new()
+        |> Map.keys()
 
       adds =
-        remote |> Enum.reject(fn {key, value} -> Map.get(local, key) == value end) |> Map.new()
+        remote
+        |> Enum.reject(fn {key, value} -> Map.get(local, key) == value end)
+        |> Map.new()
+        |> Map.keys()
 
-      distance = length(Map.keys(adds) || Map.keys(subs))
+      distance = length(adds || subs)
       {:error, %{adds: adds, subs: subs, distance: distance}}
     end
   end

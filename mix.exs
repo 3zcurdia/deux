@@ -1,6 +1,6 @@
 defmodule Deux.MixProject do
   use Mix.Project
-  @version "0.1.1"
+  @version "0.1.2"
 
   def project do
     [
@@ -32,7 +32,8 @@ defmodule Deux.MixProject do
       {:phoenix, ">= 1.4.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:tesla, "~> 1.3.0"},
-      {:exredis, ">= 0.2.4"}
+      {:exredis, ">= 0.2.4"},
+      {:jason, "~> 1.2"}
     ]
   end
 
@@ -44,15 +45,15 @@ defmodule Deux.MixProject do
       groups_for_modules: [
         # Deux.Ping
         # Deux.Redis
-        "Workers": [
+        Workers: [
           Deux.Workers.Sources,
           Deux.Workers.LocalReports,
           Deux.Workers.RemoteWorker,
-          Deux.Workers.RemoteSupervisor,
+          Deux.Workers.RemoteSupervisor
         ],
         "Source Types": [
           Deux.Ping.Source,
-          Deux.Redis.Source,
+          Deux.Redis.Source
         ]
       ]
     ]

@@ -3,7 +3,6 @@ defmodule Deux.Redis do
   Handle the redis sources and services integirty checks
   """
   alias Deux.Redis.Source
-  alias Deux.Workers.{Sources, LocalReports, RemoteSupervisor}
 
   @doc """
   Adds the remote redis source, load local reports and start worker

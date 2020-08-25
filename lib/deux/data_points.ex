@@ -2,7 +2,7 @@ defmodule Deux.DataPoints do
   @moduledoc """
   List abstraction to store with a max limit
   """
-  defstruct values: [], limit: 2_000
+  defstruct values: [], limit: 500
 
   @doc """
   It adds a value to a data_points if the length is below the max limit,

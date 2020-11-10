@@ -28,7 +28,7 @@ defmodule Deux.DataPoints do
   ## Examples
 
       iex> Deux.DataPoints.discard_last(%Deux.DataPoints{values: [1,2,3]})
-      %Deux.DataPoints{values: [1,2], limit: 2_000}
+      %Deux.DataPoints{values: [1,2], limit: 500}
   """
   def discard_last(%Deux.DataPoints{values: values} = data_points) do
     {_, values} = List.pop_at(values, length(values) - 1)
